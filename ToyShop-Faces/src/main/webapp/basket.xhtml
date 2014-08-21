@@ -1,0 +1,42 @@
+<ui:composition template="/WEB-INF/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" >
+	<ui:define name="title">Toy Shop Basket</ui:define>
+	<ui:define name="content">
+		<div class="page-header">
+			<h3>My basket!</h3>
+		</div>
+		
+		<h:form prependId="false">
+		<div class="box-products">
+		<h:dataTable value="#{basketController.products}" var="product" styleClass="table table-striped table-basket">
+			<h:column>
+				<h:graphicImage styleClass="img-thumbnail img-product" value="/resources/pictures/#{product.picture}" width="35" height="50" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Product</f:facet>
+				<h:outputText value="#{product.name}" />
+				<f:facet name="footer"><strong>Total</strong></f:facet>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Price</f:facet>
+				<h:outputLabel value="#{product.price}">
+					<f:convertNumber type="currency" currencySymbol="$ " />
+				</h:outputLabel>
+				<f:facet name="footer">
+					<h:outputLabel value="#{basketController.total}">
+						<f:convertNumber type="currency" currencySymbol="$ " />
+					</h:outputLabel>
+				</f:facet>
+			</h:column>
+			<h:column>
+				<h:commandButton styleClass="btn btn-danger btn-sm" value="Remove" action="#{basketController.removeProduct(product)}" />
+			</h:column>
+		</h:dataTable>
+		</div>
+		<div>
+			<h:commandButton styleClass="btn btn-success" value="Checkout" action="#{basketController.startCheckout()}" disabled="#{not basketController.allowedCheckout}" />
+		</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

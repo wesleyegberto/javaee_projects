@@ -1,0 +1,32 @@
+<ui:composition template="/WEB-INF/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" >
+	<ui:define name="titl">Toy Shop - Checkout</ui:define>
+	
+	<ui:define name="content">
+		<h:form><fieldset>
+			<p>Fill the shipping address to proceed the checkout!</p>
+			
+			<h:panelGrid columns="3" columnClasses="col-pad-5">
+				<h:outputLabel for="address" value="Address " />
+				<h:inputText id="address" styleClass="form-control" value="#{checkoutController.customer.address}"
+					required="true" requiredMessage="Address required" converterMessage="Invalid address" validatorMessage="Invalid address" />
+				<h:message for="address" styleClass="label-error" />
+				
+				<h:outputLabel for="city" value="City " />
+				<h:inputText id="city" styleClass="form-control" value="#{checkoutController.customer.city}"
+					required="true" requiredMessage="City required" converterMessage="Invalid city" validatorMessage="Invalid city" />
+				<h:message for="city" styleClass="label-error" />
+				
+				<h:outputLabel for="zipcode" value="Zip code " />
+				<h:inputText id="zipcode" styleClass="form-control" value="#{checkoutController.customer.zipCode}"
+					required="true" requiredMessage="Zip code required" />
+				<h:message for="zipcode" styleClass="label-error" />
+				
+			</h:panelGrid>
+			<h:commandButton value="Confirm" styleClass="btn btn-success" action="#{checkoutController.proceedConfirmation()}" />
+			
+			<p><h:messages styleClass="alert alert-danger error" globalOnly="true" /></p>
+		</fieldset></h:form>
+	</ui:define>
+</ui:composition>

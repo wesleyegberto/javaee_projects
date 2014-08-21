@@ -1,0 +1,32 @@
+<ui:composition template="/WEB-INF/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" >
+	<ui:define name="content">
+		<div class="page-header">
+			<h4>Welcome to Toy Shop!</h4>
+			<p>Our store has the best action figures in the market! Come check our products!</p>
+		</div>
+		
+		<h:form prependId="false">
+		<div class="box-products">
+		<h:dataTable value="#{catalogController.products}" var="product" cellspacing="10">
+			<h:column>
+				<h:graphicImage styleClass="img-thumbnail img-product" value="/resources/pictures/#{product.picture}" width="120" height="150" />
+			</h:column>
+			<h:column>
+				<h:link outcome="details" value="#{product.name}">
+					<f:param name="product" value="#{product.id}" />
+				</h:link>
+				<br/>
+				<h:outputLabel value="#{product.price}">
+					<f:convertNumber type="currency" currencySymbol="$ " />
+				</h:outputLabel>
+			</h:column>
+			<h:column>
+				<h:commandButton styleClass="btn btn-primary btn-sm" value="Add to basket" action="#{basketController.addProduct(product)}" />
+			</h:column>
+		</h:dataTable>
+		</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

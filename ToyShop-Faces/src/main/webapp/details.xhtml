@@ -1,0 +1,22 @@
+<ui:composition template="/WEB-INF/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" >
+	<ui:define name="content">
+		<f:metadata>
+            <f:viewParam name="product" value="#{productController.productId}" />
+            <f:event type="javax.faces.event.PreRenderComponentEvent" listener="#{productController.loadProduct}"/>
+        </f:metadata>
+        
+		<h:form>
+			<h:graphicImage styleClass="img-thumbnail bigimg-product" value="/resources/pictures/#{productController.product.picture}" width="300" height="450" />
+			<div class="details-product">
+				<h3><h:outputText value="#{productController.product.name}" /></h3>
+				<p><h:outputText value="#{productController.product.description}" /></p>
+				<h:outputLabel value="#{productController.product.price}">
+					<f:convertNumber type="currency" currencySymbol="$ " />
+				</h:outputLabel>
+				<div><h:commandButton styleClass="btn btn-primary btn-sm" value="Add to basket" action="#{basketController.addProduct(productController.product)}" /></div>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

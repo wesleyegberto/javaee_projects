@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title><ui:insert name="title">Toy Shop</ui:insert></title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="appstyle.css" />
+</h:head>
+<h:body>
+	<div class="container">
+		<h:form>
+		<nav class="navbar navbar-default" role="navigation">
+			<div class="navbar-header"><a href="/ToyShop-Faces/" class="navbar-brand">Toy Shop</a></div>
+			<div>
+				<ul class="nav navbar-nav">
+					<li><a href="/ToyShop-Faces/">Home</a></li>
+					<li><a href="/ToyShop-Faces/catalog.xhtml">Catalog</a></li>
+					<li><h:commandLink action="/basket?faces-redirect=true"> Basket <span class="badge">
+					<h:outputLabel value="#{basketController.total}">
+						<f:convertNumber type="currency" currencySymbol="$ " />
+					</h:outputLabel></span></h:commandLink></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/ToyShop-Faces/adm/">Admin</a></li>
+					<li><a href="/ToyShop-Faces/auth/login.jsp">Sign in</a></li>
+				</ul>
+			</div>
+		</nav>
+		</h:form>
+		<div class="content-body">
+			<ui:insert name="content"></ui:insert>
+		</div>
+	</div>
+	<div class="container hidden-print">
+		<hr />
+		<footer>
+			<p>© 2014 Toy Shop, Todos os direitos reservados - Powered by Wesley Egberto</p>
+		</footer>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,46 @@
+ToyShop: an e-commerce to buy toys.
+
+
+[User Stories]
+
+> Search for a product
+  As a customer
+  I want search for a product
+  So that I can add it to my basket
+  
+> Search by category
+  As a customer
+  I want search products by category
+  So that I can find similar products
+  
+> Add to basket
+  As a customer
+  I want add a product to my basket
+  So that I can buy it
+  
+> Remove from basket
+  As a customer
+  I want remove a product from my basket
+  So that I don't need to buy it
+
+> Checkout
+  As a customer
+  I want checkout my basket
+  So that I can finish my purchase
+  
+> Sign in
+  As a customer
+  I want sign in
+  So that I can finish my purchase
+
+> Payment
+  As a customer
+  I want pay my purchase
+  So that I can receive the bought items
+
+> Notification
+  As a customer
+  I want receive a notification about my purchase
+  So that I can register and follow the status
+
+

@@ -1,0 +1,54 @@
+<ui:composition template="/WEB-INF/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" >
+	<ui:define name="titl">Toy Shop - Checkout</ui:define>
+	
+	<ui:define name="content">
+		<h:form><fieldset>
+			<h3>Order confirmation!</h3>
+			
+			<h:panelGrid columns="2" columnClasses="col-pad-5">
+				<h:outputLabel value="Customer: " />
+				<h:outputText value="#{basketController.customer.name}" />
+			</h:panelGrid>
+			
+			<h:panelGrid columns="2" columnClasses="col-pad-5">
+				<h:outputLabel value="Address: " />
+				<h:outputText value="#{basketController.customer.address}" />
+				
+				<h:outputLabel value="City: " />
+				<h:outputText value="#{basketController.customer.city}" />
+				
+				<h:outputLabel value="Zip code: " />
+				<h:outputText value="#{basketController.customer.zipCode}" />
+				
+			</h:panelGrid>
+			
+			<h:dataTable value="#{basketController.products}" var="product" styleClass="table table-striped table-basket">
+				<h:column>
+					<h:graphicImage styleClass="img-thumbnail img-product" value="/resources/pictures/#{product.picture}" width="35" height="50" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Product</f:facet>
+					<h:outputText value="#{product.name}" />
+					<f:facet name="footer"><strong>Total</strong></f:facet>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Price</f:facet>
+					<h:outputLabel value="#{product.price}">
+						<f:convertNumber type="currency" currencySymbol="$ " />
+					</h:outputLabel>
+					<f:facet name="footer">
+						<h:outputLabel value="#{basketController.total}">
+							<f:convertNumber type="currency" currencySymbol="$ " />
+						</h:outputLabel>
+					</f:facet>
+				</h:column>
+			</h:dataTable>
+			
+			<h:commandButton value="Finish order" styleClass="btn btn-success" action="#{checkoutController.finishOrder()}" />
+			
+			<p><h:messages styleClass="alert alert-danger error" globalOnly="true" /></p>
+		</fieldset></h:form>
+	</ui:define>
+</ui:composition>

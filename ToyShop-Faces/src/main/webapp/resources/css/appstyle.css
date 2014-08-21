@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+body { padding:5px; }
+.navbar-nav.navbar-right:last-child { margin-right:0px !important; }
+.badge { display:inline; padding-bottom:0px; }
+.page-header { margin-top:20px; }
+.content-body { padding:5px 10px; }
+.label-error { color:red; }
+ul.error, ul.error li { text-decoration:none; list-style:none; list-style-type:none; }
+ul.error { padding:5px; }
+
+.col-pad-5 { padding: 5px 10px; }
+.table-catalog tr td { padding:5px; }
+.table-basket { max-width:600px; }
+.table-basket tr td { vertical-align:middle; min-width:150px; }
+.box-products { padding:5px; }
+.img-product { float:left; margin:5px; width:120px; height:120px; }
+.details-product { float:left; padding-left:20px; }
+.bigimg-product { float:left; padding:10px; margin:5px; width:200px; height:250px; }
