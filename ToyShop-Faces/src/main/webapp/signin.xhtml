@@ -1,0 +1,25 @@
+<ui:composition template="/WEB-INF/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" >
+	<ui:define name="titl">Toy Shop - Sign In</ui:define>
+	
+	<ui:define name="content">
+		<h:form><fieldset>
+			<p>Sign in</p>
+			<h:panelGrid columns="3" columnClasses="col-pad-5">
+				<h:outputLabel for="email" value="E-mail " />
+				<h:inputText id="email" styleClass="form-control" value="#{loginController.customer.email}"
+					required="true" requiredMessage="E-mail required" converterMessage="Invalid e-mail" validatorMessage="Invalid e-mail" />
+				<h:message for="email" styleClass="label-error" />
+				
+				<h:outputLabel for="password" value="Password " />
+				<h:inputSecret id="password" styleClass="form-control" value="#{loginController.customer.password}"
+					required="true" requiredMessage="Password required" />
+				<h:message for="password" styleClass="label-error" />
+				
+			</h:panelGrid>
+			<h:commandButton value="Sign in" action="#{loginController.authenticate()}" styleClass="btn btn-success" />
+			<p><h:messages styleClass="alert alert-danger error" globalOnly="true" /></p>
+		</fieldset></h:form>
+	</ui:define>
+</ui:composition>

@@ -3,8 +3,10 @@ package com.github.wesleyegberto.toyshop.presentation.checkout;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import com.github.wesleyegberto.toyshop.business.customer.boundary.CustomerManager;
 import com.github.wesleyegberto.toyshop.business.customer.entity.Customer;
@@ -53,13 +55,14 @@ public class CheckoutController implements Serializable {
 		return order != null && order.getId() > 0;
 	}
 	
-	
 	public String authenticate() {
 		// start the conversation
 		if(conversation.isTransient()) {
 			conversation.begin();
 		}
 		if(authenticator.validateCustomer(basketController.getCustomer())) {
+			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+			session.setAttribute("customer", basketController.getCustomer());
 			return "shipping?faces-redirect=true";
 		}
 		FacesUtil.addWarnMessage("Invalid e-mail and/or password.");
@@ -73,6 +76,8 @@ public class CheckoutController implements Serializable {
 		}
 		customerManager.createNewCustomer(basketController.getCustomer());
 		if(authenticator.validateCustomer(basketController.getCustomer())) {
+			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+			session.setAttribute("customer", basketController.getCustomer());
 			return "shipping?faces-redirect=true";
 		}
 		return null;

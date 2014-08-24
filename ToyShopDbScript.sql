@@ -7,7 +7,7 @@ USE TOYSHOP_DB;
 CREATE TABLE USER
 (
 	username VARCHAR(20) PRIMARY KEY,
-	password VARCHAR(32) NOT NULL,
+	password VARCHAR(255) NOT NULL,
 	name VARCHAR(100) NOT NULL
 );
 
@@ -23,14 +23,21 @@ CREATE TABLE USER_ACL
 	PRIMARY KEY(username, rolename)
 );
 
+
+
 /*
 -- Inserts for Users and Roles --
 The password was created using JBoss lib Picketbox 4.0.x: org.jboss.security.auth.spi.Util.Util.createPasswordHash("MD5", Util.BASE64_ENCODING, null, null, "123123")
 Encrypted password Qpf0SxOVUjUkWySXOZ16kw== Is 123123
  */
-insert into USER values ('wesley', 'Qpf0SxOVUjUkWySXOZ16kw==', 'Wesley Egberto'),('odair', 'Qpf0SxOVUjUkWySXOZ16kw==', 'Odair Jose');
+insert into USER values ('wesley', 'Qpf0SxOVUjUkWySXOZ16kw==', 'Wesley Egberto'),('odair', 'Qpf0SxOVUjUkWySXOZ16kw==', 'Odair Jose'); -- for JBoss
+insert into USER value ('jose','8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918','Jose'); -- for Glassfish (password is admin)
+
 insert into ROLE values ('Manager'),('Customer'),('Guest');
-insert into USER_ACL values ('wesleyegberto', 'Manager'),('wesleyegberto','Customer'),('odair','Customer');
+insert into USER_ACL values ('wesleyegberto', 'Manager'),('wesleyegberto','Customer'),('odair','Customer'),('jose','Manager');
+
+
+
 
 
 
@@ -44,11 +51,3 @@ insert into PRODUCT (name, description, category, price, stockQnty, picture) val
 ('The Claw', 'The Claw from Toy Story movie', 'Movie',  129, 10, 'toystory-theclaw.jpg');
 
 
-
-select * from PRODUCT;
-
-select * from CUSTOMER;
-
-select * from WEB_ORDER
-inner join WEB_ORDER_PRODUCT
-on id = WEB_ORDER_id;

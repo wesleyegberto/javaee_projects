@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
 	<persistence-unit name="ToyShopUnit" transaction-type="JTA">
-		<!-- JPA provider -->
-		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		
+		<!-- JPA provider 
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<!-- entities mapped -->
 
-		<jta-data-source>java:/jdbc/ToyShopDb</jta-data-source>
+		<jta-data-source>jdbc/ToyShopDb</jta-data-source>
 		<class>com.github.wesleyegberto.toyshop.business.catalog.entity.Product</class>
 		<class>com.github.wesleyegberto.toyshop.business.customer.entity.Customer</class>
 		<class>com.github.wesleyegberto.toyshop.business.order.entity.Order</class>
+		
 		<properties>
 			<!-- JTA doesn't need to setup the connection properties, the Container will provide
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

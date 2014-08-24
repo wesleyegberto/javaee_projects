@@ -21,8 +21,10 @@
 					</h:outputLabel></span></h:commandLink></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/ToyShop-Faces/adm/">Admin</a></li>
-					<li><a href="/ToyShop-Faces/auth/login.jsp">Sign in</a></li>
+					<li><h:link value="Admin" outcome="/adm/index" rendered="#{not basketController.logged}" /></li>
+					<li><h:link value="Sign in" outcome="/signin" rendered="#{not basketController.logged}" /></li>
+					<li><h:link value="#{basketController.customer.name}" outcome="/index" rendered="#{basketController.logged}" /></li>
+					<li><h:commandLink value="Logout" rendered="#{basketController.logged}" action="#{loginController.loggout()}" /></li>
 				</ul>
 			</div>
 		</nav>
@@ -34,7 +36,7 @@
 	<div class="container hidden-print">
 		<hr />
 		<footer>
-			<p>© 2014 Toy Shop, Todos os direitos reservados - Powered by Wesley Egberto</p>
+			<p>© 2014 Toy Shop, All rights reserved - Powered by Wesley Egberto</p>
 		</footer>
 	</div>
 </h:body>

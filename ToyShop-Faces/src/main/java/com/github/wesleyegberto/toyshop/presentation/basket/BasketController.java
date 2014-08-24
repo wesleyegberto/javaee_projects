@@ -7,7 +7,9 @@ import java.util.List;
 
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import com.github.wesleyegberto.toyshop.business.catalog.entity.Product;
 import com.github.wesleyegberto.toyshop.business.customer.entity.Customer;
@@ -16,6 +18,7 @@ import com.github.wesleyegberto.toyshop.business.customer.entity.Customer;
 @SessionScoped
 public class BasketController implements Serializable {
 	private static final long serialVersionUID = 6891988745873240820L;
+	
 	private Customer customer;
 	private List<Product> products = new LinkedList<Product>();
 
@@ -33,7 +36,12 @@ public class BasketController implements Serializable {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-
+	
+	public boolean isLogged() {
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		return session != null && session.getAttribute("customer") != null;
+	}
+	
 	public List<Product> getProducts() {
 		return products;
 	}
@@ -65,6 +73,9 @@ public class BasketController implements Serializable {
 	}
 
 	public String startCheckout() {
+		if(isLogged()) {
+			return "checkout/shipping?faces-redirect=true"; 
+		}
 		return "checkout/identification?faces-redirect=true";
 	}
 	

@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -32,6 +34,10 @@ public class Order {
 	@ManyToOne(cascade = CascadeType.ALL, optional = false)
 	private Customer customer;
 	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "WEB_ORDER_PRODUCT",
+		joinColumns = { @JoinColumn(name="WEB_ORDER_id", referencedColumnName = "id") },
+		inverseJoinColumns = { @JoinColumn(name = "products_ID", referencedColumnName = "id") }
+	)
 	private List<Product> products;
 
 	private String address;

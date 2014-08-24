@@ -35,7 +35,8 @@
 		</h:dataTable>
 		</div>
 		<div>
-			<h:commandButton styleClass="btn btn-success" value="Checkout" action="#{basketController.startCheckout()}" disabled="#{not basketController.allowedCheckout}" />
+			<h:commandButton styleClass="btn btn-default" value="Continue shopping" action="/catalog?faces-redirect=true" />
+			<h:commandButton styleClass="btn btn-success" value="Proceed to checkout" action="#{basketController.startCheckout()}" disabled="#{not basketController.allowedCheckout}" />
 		</div>
 		</h:form>
 	</ui:define>
