@@ -95,7 +95,7 @@ public class CheckoutController implements Serializable {
 			order.setProducts(basketController.getProducts());
 			order.setAddress(basketController.getCustomer().getAddress());
 			order.setCity(basketController.getCustomer().getCity());
-			order.setZipCode(basketController.getCustomer().getCity());
+			order.setZipCode(basketController.getCustomer().getZipCode());
 			order.setTotal(basketController.getTotal());
 			orderProcessor.processOrder(order);
 			// ends the conversation

@@ -21,9 +21,9 @@
 					</h:outputLabel></span></h:commandLink></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><h:link value="Admin" outcome="/adm/index" rendered="#{not basketController.logged}" /></li>
-					<li><h:link value="Sign in" outcome="/signin" rendered="#{not basketController.logged}" /></li>
-					<li><h:link value="#{basketController.customer.name}" outcome="/index" rendered="#{basketController.logged}" /></li>
+					<li><h:link value="Admin" outcome="/adm/index?faces-redirect=true" rendered="#{not basketController.logged}" /></li>
+					<li><h:link value="Sign in" outcome="/signin?faces-redirect=true" rendered="#{not basketController.logged}" /></li>
+					<li><h:link value="#{basketController.customer.name}" outcome="/index?faces-redirect=true" rendered="#{basketController.logged}" /></li>
 					<li><h:commandLink value="Logout" rendered="#{basketController.logged}" action="#{loginController.loggout()}" /></li>
 				</ul>
 			</div>

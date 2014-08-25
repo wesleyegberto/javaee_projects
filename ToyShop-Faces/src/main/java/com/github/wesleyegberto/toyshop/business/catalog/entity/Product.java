@@ -9,16 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Access(AccessType.FIELD)
 @Table(name = "PRODUCT")
-@NamedQueries({
-	@NamedQuery(name = Product.GET_ALL, query = "select p from Product p"),
-})
+@NamedQuery(name = Product.GET_ALL, query = "select p from Product p")
 public class Product implements Serializable {
 	private static final long serialVersionUID = 4222956223964381356L;
 	

@@ -1,0 +1,51 @@
+<ui:composition template="/WEB-INF/template.xhtml" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" >
+	<ui:define name="content">
+		<div class="page-header">
+			<h4>View orders</h4>
+			<p>Here you can manager the orders.</p>
+		</div>
+		
+		<h:dataTable value="#{orderViewerController.orders}" var="order" styleClass="table table-striped" >
+			<h:column>
+				<f:facet name="header">Order ID</f:facet>
+				<h:outputText value="#{order.id}">
+					<f:convertNumber pattern="0000" />
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Date</f:facet>
+				<h:outputText value="#{order.orderDate}">
+					<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Customer</f:facet>
+				<h:outputText value="#{order.customer.name}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Shipping address</f:facet>
+				<h:outputText value="#{order.address} - #{order.city} - #{order.zipCode}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Total</f:facet>
+				<h:outputText value="#{order.total}">
+					<f:convertNumber type="currency" currencySymbol=" $ " />
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Status</f:facet>
+				<h:outputText value="#{order.status}" />
+			</h:column>
+			<h:column>
+				<h:link value="View" outcome="edit_order?faces-redirect=true" styleClass="btn btn-primary btn-sm">
+					<f:param name="orderId" value="#{order.id}" />
+				</h:link>
+			</h:column>
+		</h:dataTable>
+		<div><h:link value="Back" outcome="index?faces-redirect=true" styleClass="btn btn-default" /></div>
+		
+		<p><h:messages styleClass="alert alert-danger error" globalOnly="true" /></p>
+	</ui:define>
+</ui:composition>

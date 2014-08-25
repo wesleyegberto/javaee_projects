@@ -43,4 +43,12 @@ ToyShop: an e-commerce to buy toys.
   I want receive a notification about my purchase
   So that I can register and follow the status
 
-
+> View orders
+  As a manager
+  I want view orders
+  So that I can follow the status
+  
+> Edit order
+  As a manager
+  I want edit an order
+  So that I can finish the customer's order
