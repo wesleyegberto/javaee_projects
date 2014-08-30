@@ -20,6 +20,10 @@ public class OrderProcessor {
 		System.out.println("[EJB] OrderProcessor created");
 	}
 
+	/**
+	 * Process the customer's orders.
+	 * @param order
+	 */
 	public void processOrder(Order order) {
 		em.merge(order);
 		mailer.mailOrder(order);

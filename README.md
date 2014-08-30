@@ -9,7 +9,7 @@ To test I've created a ToyShop application using different technologies of Java 
 
 
 ## ToyShop Faces ##
-Project using: JSF + EJB + JPA + JAAS.
+Project using: JSF (with bean validation) + EJB + JPA + JAAS.
 
 * JSF: presentation layer;
 * JPA: model layer;

@@ -17,7 +17,6 @@ public class OrderManager {
 
 	@PersistenceContext
 	private EntityManager em;
-	
 	@Inject
 	private OrderMailer mailer;
 	
@@ -34,6 +33,10 @@ public class OrderManager {
 		return query.getResultList();
 	}
 	
+	/**
+	 * Finish the given order and update the data.
+	 * @param order
+	 */
 	public void finishOrder(Order order) {
 		order.setStatus(OrderStatus.FINISHED);
 		em.merge(order);
