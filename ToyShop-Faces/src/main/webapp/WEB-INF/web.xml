@@ -27,7 +27,7 @@
 
 	<login-config>
 		<auth-method>FORM</auth-method>
-		<realm-name>ToyShopRealm</realm-name> <!-- for Glassfish -->
+		<!-- <realm-name>ToyShopRealm</realm-name>  for Glassfish -->
 		<form-login-config>
 			<form-login-page>/auth/login.xhtml</form-login-page>
 			<form-error-page>/auth/error.xhtml</form-error-page>

@@ -96,4 +96,9 @@ public class Product implements Serializable {
 		this.stockQnty = stockQnty;
 	}
 
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", name=" + name + ", category=" + category + ", price=" + price + "]";
+	}
+	
 }

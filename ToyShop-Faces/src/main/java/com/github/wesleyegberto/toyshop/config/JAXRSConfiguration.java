@@ -6,7 +6,7 @@ import javax.ws.rs.core.Application;
 /**
  * Class to activate the REST. 
  */
-@ApplicationPath("resources")
+@ApplicationPath("services")
 public class JAXRSConfiguration extends Application {
 
 }
