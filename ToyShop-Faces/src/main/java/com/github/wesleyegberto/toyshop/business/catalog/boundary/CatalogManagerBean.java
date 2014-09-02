@@ -21,7 +21,11 @@ public class CatalogManagerBean implements CatalogManager {
 		System.out.println("[EJB] CatalogManagerBean created");
     }
 
-    public void saveProduct(Product prod) {
+    public CatalogManagerBean(EntityManager em) {
+    	this.em = em;
+	}
+
+	public void saveProduct(Product prod) {
     	em.persist(prod);
     }
     

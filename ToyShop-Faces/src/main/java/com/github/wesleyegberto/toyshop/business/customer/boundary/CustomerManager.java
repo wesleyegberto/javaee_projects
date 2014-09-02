@@ -8,7 +8,7 @@ import com.github.wesleyegberto.toyshop.business.customer.entity.Customer;
 
 @Stateless
 public class CustomerManager {
-	
+
 	@PersistenceContext
 	private EntityManager em;
 
@@ -16,13 +16,12 @@ public class CustomerManager {
 		System.out.println("[EJB] CustomerManager created");
 	}
 
+	public CustomerManager(EntityManager em) {
+		this.em = em;
+	}
+
 	public void createNewCustomer(Customer customer) {
 		em.persist(customer);
-	}
-	
-	public Customer verifyIdentity(Customer customer) {
-		
-		return null;
 	}
 
 	public Customer getCustomerById(long id) {
