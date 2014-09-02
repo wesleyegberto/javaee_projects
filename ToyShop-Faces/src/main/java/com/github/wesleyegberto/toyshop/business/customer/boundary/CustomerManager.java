@@ -24,4 +24,8 @@ public class CustomerManager {
 		
 		return null;
 	}
+
+	public Customer getCustomerById(long id) {
+		return em.find(Customer.class, id);
+	}
 }

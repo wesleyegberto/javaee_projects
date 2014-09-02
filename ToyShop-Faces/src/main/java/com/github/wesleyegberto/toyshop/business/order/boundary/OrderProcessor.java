@@ -1,6 +1,7 @@
 package com.github.wesleyegberto.toyshop.business.order.boundary;
 
 import javax.ejb.Stateless;
+import javax.enterprise.event.Event;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -16,6 +17,9 @@ public class OrderProcessor {
 	@Inject
 	private OrderMailer mailer;
 	
+	@Inject
+	private Event<Order> events;
+	
 	public OrderProcessor() {
 		System.out.println("[EJB] OrderProcessor created");
 	}
@@ -25,6 +29,7 @@ public class OrderProcessor {
 	 * @param order
 	 */
 	public void processOrder(Order order) {
+		events.fire(order);
 		em.merge(order);
 		mailer.mailOrder(order);
 	}

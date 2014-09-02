@@ -129,4 +129,11 @@ public class Order {
 	public boolean isFinished() {
 		return status == OrderStatus.FINISHED;
 	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", orderDate=" + orderDate + ", total=" + total + ", customer=" + customer.getName() + "]";
+	}
+	
+	
 }

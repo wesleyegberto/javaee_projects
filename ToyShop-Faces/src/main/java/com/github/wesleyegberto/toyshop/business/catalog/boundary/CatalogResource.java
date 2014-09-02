@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 import com.github.wesleyegberto.toyshop.business.catalog.entity.Product;
 
 /**
- * Web Service RESTful 
+ * Web Service RESTful.
  */
 @Path("catalog")
 public class CatalogResource implements WSCatalogInterface {
@@ -23,9 +23,6 @@ public class CatalogResource implements WSCatalogInterface {
 		System.out.println("[REST] CatalogResource created");
 	}
 
-	/**
-	 * @see com.github.wesleyegberto.toyshop.business.catalog.boundary.WSCatalogInterface#getCatalog()
-	 */
 	@Override
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -33,9 +30,6 @@ public class CatalogResource implements WSCatalogInterface {
 		return catalog.getAll();
 	}
 
-	/**
-	 * @see com.github.wesleyegberto.toyshop.business.catalog.boundary.WSCatalogInterface#searchProductsByName(java.lang.String)
-	 */
 	@Override
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -44,9 +38,6 @@ public class CatalogResource implements WSCatalogInterface {
 		return catalog.searchByName(name);
 	}
 
-	/**
-	 * @see com.github.wesleyegberto.toyshop.business.catalog.boundary.WSCatalogInterface#searchProductsByCategory(java.lang.String)
-	 */
 	@Override
 	@GET
 	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})

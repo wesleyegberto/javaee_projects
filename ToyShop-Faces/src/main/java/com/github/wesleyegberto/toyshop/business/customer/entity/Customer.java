@@ -9,6 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
@@ -16,6 +20,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.github.wesleyegberto.toyshop.business.security.control.Encryptor;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 @Table(name = "CUSTOMER", uniqueConstraints = @UniqueConstraint(columnNames = { "email" }))
 @Access(AccessType.FIELD)
@@ -29,6 +35,7 @@ public class Customer {
 	 @NotEmpty @Email 
 	private String email;
 	@NotEmpty @Length(min = 6, message = "Password too short, must be at least 6 characters")
+	@XmlTransient
 	private String password;
 	private String address;
 	private String city;
