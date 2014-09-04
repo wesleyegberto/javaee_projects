@@ -49,10 +49,8 @@ public class CatalogManagerBeanTest {
 
 	@Test
 	public final void testRemoveProduct() {
-		final int id = 129;
-
 		final Product prod = new Product();
-		prod.setId(id);
+		prod.setId(129);
 
 		catalog.removeProduct(prod);
 
@@ -83,39 +81,30 @@ public class CatalogManagerBeanTest {
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
 	public final void testSearchByName() {
 		final String NAME = "Batm";
-
-		// mock the criteria
-		CriteriaBuilder criteria = mock(CriteriaBuilder.class);
-		when(em.getCriteriaBuilder()).thenReturn(criteria);
-
-		// mocking the query
-		CriteriaQuery<Product> query = mock(CriteriaQuery.class);
-		when(criteria.createQuery(Product.class)).thenReturn(query);
-
-		// mocking the root
-		Root<Product> product = mock(Root.class);
-		when(query.from(Product.class)).thenReturn(product);
-
-		// mocking the typed query
-		TypedQuery<Product> typedQuery = mock(TypedQuery.class);
-		when(typedQuery.getResultList()).thenReturn(new ArrayList<Product>());
-		when(em.createQuery(query)).thenReturn(typedQuery);
+		
+		mockQueryCriteria(new ArrayList<Product>());
 
 		List<Product> result = catalog.searchByName(NAME);
 		Assert.assertNotNull(result);
-
-		verify(em, times(1)).createQuery(query);
-		verify(typedQuery, times(1)).getResultList();
+		Assert.assertEquals(0, result.size());
 	}
 
 	@Test
-	@SuppressWarnings("unchecked")
 	public final void testSearchByCategory() {
 		final String CATEGORY = "Movie";
 
+		mockQueryCriteria(new ArrayList<Product>());
+		
+		List<Product> result = catalog.searchByCategory(CATEGORY);
+		Assert.assertNotNull(result);
+		Assert.assertEquals(0, result.size());
+
+	}
+
+	@SuppressWarnings("unchecked")
+	public void mockQueryCriteria(List<Product> listToReturn) {
 		// mock the criteria
 		CriteriaBuilder criteria = mock(CriteriaBuilder.class);
 		when(em.getCriteriaBuilder()).thenReturn(criteria);
@@ -130,14 +119,7 @@ public class CatalogManagerBeanTest {
 
 		// mocking the typed query
 		TypedQuery<Product> typedQuery = mock(TypedQuery.class);
-		when(typedQuery.getResultList()).thenReturn(new ArrayList<Product>());
+		when(typedQuery.getResultList()).thenReturn(listToReturn);
 		when(em.createQuery(query)).thenReturn(typedQuery);
-
-		List<Product> result = catalog.searchByCategory(CATEGORY);
-		Assert.assertNotNull(result);
-
-		verify(em, times(1)).createQuery(query);
-		verify(typedQuery, times(1)).getResultList();
 	}
-
 }

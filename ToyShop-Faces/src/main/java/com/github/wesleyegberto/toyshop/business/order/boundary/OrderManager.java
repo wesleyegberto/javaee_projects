@@ -24,6 +24,11 @@ public class OrderManager {
 		System.out.println("[EJB] OrderManager created");
 	}
 	
+	public OrderManager(EntityManager em, OrderMailer mailer) {
+		this.em = em;
+		this.mailer = mailer;
+	}
+
 	public Order getOrderById(long id) {
 		return em.find(Order.class, id);
 	}

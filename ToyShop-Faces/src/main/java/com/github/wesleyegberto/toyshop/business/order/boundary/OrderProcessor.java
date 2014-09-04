@@ -16,12 +16,18 @@ public class OrderProcessor {
 
 	@Inject
 	private OrderMailer mailer;
-	
+
 	@Inject
 	private Event<Order> events;
-	
+
 	public OrderProcessor() {
 		System.out.println("[EJB] OrderProcessor created");
+	}
+
+	public OrderProcessor(EntityManager em, OrderMailer mailer, Event<Order> events) {
+		this.em = em;
+		this.mailer = mailer;
+		this.events = events;
 	}
 
 	/**
