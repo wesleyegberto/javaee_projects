@@ -8,7 +8,7 @@
 	<packaging>war</packaging>
 	
 	<name>ToyShop-Faces</name>
-	<description>ToyShop application to practice Java EE using JSF + EJB + JPA + JAAS (JDBCRealm and JAASRealm)</description>
+	<description>ToyShop application to practice Java EE using JSF (with bean validation), EJB, JPA, JAAS and JAX-WS/RS</description>
 	<url>http://maven.apache.org</url>
 
 	<dependencies>
