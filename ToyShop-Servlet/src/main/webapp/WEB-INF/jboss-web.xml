@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<jboss-web>
+	<!-- JNDI name of the Realm configured in standalone.xml in JBoss -->
+    <security-domain>java:/jaas/ToyShopRealm</security-domain>  
+</jboss-web> 
