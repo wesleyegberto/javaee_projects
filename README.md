@@ -27,14 +27,15 @@ Project using: Servlets, JSP, EJB, JPA and JAAS.
 
 ### JDBCRealm ###
 > Tomcat - server.xml:
-<Realm className="org.apache.catalina.realm.JDBCRealm" debug="99" driverName="com.mysql.jdbc.Driver"
-	connectionURL="jdbc:mysql://localhost/DbWithTables?user=root&amp;password=123123"
-   	userTable="USER" userNameCol="username" userCredCol="password" userRoleTable="ROLE" roleNameCol="rolename" />
+```
+<Realm className="org.apache.catalina.realm.JDBCRealm" debug="99" driverName="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost/DbWithTables?user=root&amp;password=123123" userTable="USER" userNameCol="username" userCredCol="password" userRoleTable="ROLE" roleNameCol="rolename" />
+```
 
 
 > JBoss - standalone.xml:
-  . In <security-domain> named as "other" include this in <authentication> node: <login-module code="UsersRoles" flag="required"/>
-  . Then include this node in <security-domains>
+* In ```<security-domain>``` named as "other" include this in ```<authentication>``` node: ```<login-module code="UsersRoles" flag="required"/>```
+* Then include this node in ```<security-domains>```
+```
 <security-domain name="ToyShopRealm" cache-type="default">
     <authentication>
         <login-module code="Database" flag="required">
@@ -47,14 +48,15 @@ Project using: Servlets, JSP, EJB, JPA and JAAS.
         </login-module>
     </authentication>
 </security-domain>
-
+```
 
 ### To Do ###
 * Include a support chat using WebSockets
 
 
 ### Links ###
-* (Bootstrap) [http://getbootstrap.com/]
-* (JBoss JDBCRealm) [http://blog.amatya.net/2012/09/implementing-security-with-jaas-on.html]
-* (Glassfish JDBCRealm) [http://java.dzone.com/articles/jdbc-realm-and-form-based]
+* [Bootstrap](http://getbootstrap.com/)
+* [JBoss JDBCRealm](http://blog.amatya.net/2012/09/implementing-security-with-jaas-on.html)
+* [Glassfish JDBCRealm](http://java.dzone.com/articles/jdbc-realm-and-form-based)
+
 
