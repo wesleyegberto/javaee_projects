@@ -14,7 +14,8 @@ Project using: JSF (with bean validation), EJB, JPA, JAAS and JAX-WS/RS.
 * JSF: presentation layer;
 * JPA: model layer;
 * EJB: business layer;
-* Web service: layer to allow other applications integrate with the ToyShop.
+* Web service: layer to allow other applications integrate with the ToyShop;
+* Test: JUnit, Mockito and Arquillian.
 
 
 ### ToyShop Servlets ###
@@ -33,8 +34,8 @@ Project using: Servlets, JSP, EJB, JPA and JAAS.
 
 
 > JBoss - standalone.xml:
-* In ```<security-domain>``` named as "other" include this in ```<authentication>``` node: ```<login-module code="UsersRoles" flag="required"/>```
-* Then include this node in ```<security-domains>```
+* In `<security-domain>` named as "other" include this in `<authentication>` node: `<login-module code="UsersRoles" flag="required"/>`
+* Then include this node in `<security-domains>`
 ```
 <security-domain name="ToyShopRealm" cache-type="default">
     <authentication>

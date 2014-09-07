@@ -20,7 +20,10 @@ import org.junit.Test;
 
 import com.github.wesleyegberto.toyshop.business.catalog.entity.Product;
 
-public class CatalogManagerBeanTest {
+/**
+ * Unit Test mocking the dependencies. 
+ */
+public class CatalogManagerBeanUnitTest {
 
 	CatalogManagerBean catalog;
 	EntityManager em;
