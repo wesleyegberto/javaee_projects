@@ -30,7 +30,9 @@ public class OrderManager {
 	}
 
 	public Order getOrderById(long id) {
-		return em.find(Order.class, id);
+		TypedQuery<Order> query = em.createNamedQuery(Order.GET_BY_ID, Order.class);
+		query.setParameter("id", id);
+		return query.getSingleResult();
 	}
 
 	public List<Order> loadOrders() {

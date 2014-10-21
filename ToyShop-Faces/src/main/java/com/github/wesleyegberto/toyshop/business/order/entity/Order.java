@@ -17,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -28,7 +29,10 @@ import com.github.wesleyegberto.toyshop.business.customer.entity.Customer;
 @Entity
 @Table(name = "WEB_ORDER")
 @Access(AccessType.FIELD)
-@NamedQuery(name = Order.GET_ALL, query = "select ord from Order ord")
+@NamedQueries({
+	@NamedQuery(name = Order.GET_ALL, query = "select ord from Order ord"),
+	@NamedQuery(name = Order.GET_BY_ID, query = "select o from Order o join fetch o.products where o.id = :id")
+})
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,9 +40,9 @@ public class Order {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date orderDate;
 	private double total;
-	@ManyToOne(cascade = CascadeType.ALL, optional = false)
+	@ManyToOne(cascade = CascadeType.PERSIST, optional = false)
 	private Customer customer;
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY)
 	@JoinTable(name = "WEB_ORDER_PRODUCT", joinColumns = { @JoinColumn(name = "WEB_ORDER_id", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "products_ID", referencedColumnName = "id") })
 	private List<Product> products;
 
@@ -49,6 +53,7 @@ public class Order {
 	private OrderStatus status = OrderStatus.STARTED;
 
 	public static final String GET_ALL = "Order.getAll";
+	public static final String GET_BY_ID = "Order.getById";
 
 	public Order() {
 		this.orderDate = new Date();
