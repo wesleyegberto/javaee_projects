@@ -1,5 +1,6 @@
 package com.github.wesleyegberto.toyshop.business.order.boundary;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -37,6 +38,13 @@ public class OrderManager {
 
 	public List<Order> loadOrders() {
 		TypedQuery<Order> query = em.createNamedQuery(Order.GET_ALL, Order.class);
+		return query.getResultList();
+	}
+
+	public List<Order> loadOrders(Date initialDate, Date finalDate) {
+		TypedQuery<Order> query = em.createNamedQuery(Order.GET_BY_PERIOD, Order.class);
+		query.setParameter("initialDate", initialDate);
+		query.setParameter("finalDate", finalDate);
 		return query.getResultList();
 	}
 	

@@ -1,5 +1,6 @@
 package com.github.wesleyegberto.toyshop.presentation.admin;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
@@ -14,18 +15,41 @@ import com.github.wesleyegberto.toyshop.business.order.entity.Order;
 public class OrderViewerController {
 	@Inject
 	private OrderManager orderManager;
-	
+
 	private List<Order> orders;
-	
+
+	private Date initialDate;
+	private Date finalDate;
+
 	public OrderViewerController() {
 		System.out.println("[MB] OrderViewerController created");
 	}
 
+	public Date getInitialDate() {
+		return initialDate;
+	}
+
+	public void setInitialDate(Date initialDate) {
+		this.initialDate = initialDate;
+	}
+
+	public Date getFinalDate() {
+		return finalDate;
+	}
+
+	public void setFinalDate(Date finalDate) {
+		this.finalDate = finalDate;
+	}
+
 	public List<Order> getOrders() {
 		if(orders == null) {
-			orders = orderManager.loadOrders();
+			if(initialDate != null && finalDate != null) {
+				orders = orderManager.loadOrders(initialDate, finalDate);
+			} else {
+				orders = orderManager.loadOrders();
+			}
 		}
 		return orders;
 	}
-	
+
 }

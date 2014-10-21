@@ -31,7 +31,8 @@ import com.github.wesleyegberto.toyshop.business.customer.entity.Customer;
 @Access(AccessType.FIELD)
 @NamedQueries({
 	@NamedQuery(name = Order.GET_ALL, query = "select ord from Order ord"),
-	@NamedQuery(name = Order.GET_BY_ID, query = "select o from Order o join fetch o.products where o.id = :id")
+	@NamedQuery(name = Order.GET_BY_ID, query = "select o from Order o join fetch o.products where o.id = :id"),
+	@NamedQuery(name = Order.GET_BY_PERIOD, query = "select o from Order o where o.orderDate between :initialDate and :finalDate")
 })
 public class Order {
 	@Id
@@ -54,9 +55,11 @@ public class Order {
 
 	public static final String GET_ALL = "Order.getAll";
 	public static final String GET_BY_ID = "Order.getById";
+	public static final String GET_BY_PERIOD = "Order.getByPeriod";
 
 	public Order() {
 		this.orderDate = new Date();
+		System.out.println(orderDate);
 	}
 
 	public long getId() {
