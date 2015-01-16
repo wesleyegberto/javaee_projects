@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<cc:interface>
+	<cc:attribute name="id" required="false" />
+	<cc:attribute name="prependId" default="true" />
+	<cc:attribute name="columns" default="1" />
+	<cc:attribute name="canSubmit" default="true" />
+</cc:interface>
+
+<cc:implementation>
+	<h:form id="#{cc.attrs.id}" prependId="#{cc.attrs.prependId}">
+	<h:panelGrid columns="#{cc.attrs.columns}">
+		<cc:insertFacet name="header" />
+		
+		<cc:insertChildren />
+		
+		<ui:fragment rendered="#{cc.attrs.canSubmit}" >
+			<cc:renderFacet name="footer" />
+		</ui:fragment>
+		
+		<ui:fragment rendered="#{not cc.attrs.canSubmit}" >
+			<cc:renderFacet name="noPermission" />
+		</ui:fragment>
+	</h:panelGrid>
+	</h:form>
+</cc:implementation>
+</html>

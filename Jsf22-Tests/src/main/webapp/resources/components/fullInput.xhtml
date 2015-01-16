@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+
+<cc:interface>
+	<cc:attribute name="id" required="false" />
+	<cc:attribute name="label" required="true" />
+	<cc:attribute name="value" required="true" />
+	<cc:attribute name="required" default="false" />
+	<cc:attribute name="requiredMessage" default="Field required" />
+	<cc:attribute name="passthrough" default="" />
+</cc:interface>
+
+<cc:implementation>
+	<h:outputLabel for="#{cc.attrs.id}" value="#{cc.attrs.label}: " />
+
+	<input type="text" jsf:id="#{cc.attrs.id}" jsf:label="#{cc.attrs.label}" jsf:value="#{cc.attrs.value}"
+		jsf:required="#{cc.attrs.required}" jsf:requiredMessage="#{cc.attrs.requiredMessage}"
+		placeholder="#{cc.attrs.passthrough}" />
+	<h:message for="#{cc.attrs.id}" />
+</cc:implementation>
+</html>

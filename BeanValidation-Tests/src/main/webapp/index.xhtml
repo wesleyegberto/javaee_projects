@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Person Manager</title>
+</h:head>
+<h:body>
+
+	<h:form id="formInsert" >
+		<h:panelGrid columns="2" rendered="#{not indexController.isEdition()}">
+			<f:validateBean validationGroups="com.github.wesleyegberto.beanvalidation.MinimumValidation">
+				<h:outputLabel value="Name" />
+				<h:inputText label="Name" value="#{indexController.person.name}" validatorMessage="Invalid name" />
+				
+				<h:outputLabel value="Birth date" />
+				<h:inputText label="Birth date" value="#{indexController.person.birthDate}" validatorMessage="Invalid birth date">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:inputText>
+			</f:validateBean>
+			
+			<h:commandButton value="Insert" action="#{indexController.insert}" />
+		</h:panelGrid>
+	</h:form>
+	
+	<h:form id="formUpdate" >
+		<h:inputHidden value="#{indexController.person.id}" />
+		<h:panelGrid columns="2" rendered="#{indexController.isEdition()}">
+			<f:validateBean validationGroups="com.github.wesleyegberto.beanvalidation.FullValidation">
+				<h:outputLabel value="ID" />
+				<h:inputText value="#{indexController.person.id}" readonly="true" />
+			
+				<h:outputLabel value="Name" />
+				<h:inputText label="Name" value="#{indexController.person.name}" validatorMessage="Invalid name" />
+				
+				<h:outputLabel value="Birth date" />
+				<h:inputText label="Birth date" value="#{indexController.person.birthDate}" validatorMessage="Invalid birth date">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:inputText>
+			</f:validateBean>
+			
+			<h:commandButton value="Update" action="#{indexController.save}" />
+			<h:commandButton value="Cancel" >
+				<f:ajax render="@all" />
+			</h:commandButton>
+		</h:panelGrid>
+	</h:form>
+	
+	<h:messages />
+	
+	<h:form>	
+		<h:dataTable value="#{indexController.persons}" var="person" border="1">
+			<h:column>
+				<f:facet name="header">ID</f:facet>
+				<h:outputText value="#{person.id}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Name</f:facet>
+				<h:outputText value="#{person.name}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">Birth date</f:facet>
+				<h:outputText value="#{person.birthDate}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</h:column>
+			<h:column>
+				<h:commandLink value="Edit" >
+					<f:setPropertyActionListener target="#{indexController.person}" value="#{person}" />
+					<f:ajax render="@all" />
+				</h:commandLink>
+			</h:column>
+		</h:dataTable>
+	</h:form>
+	
+</h:body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	<persistence-unit name="PersonPU" transaction-type="JTA">
+
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+		
+		<!-- Define the validation mode in JPA
+		AUTO - will validate if there is a provider
+		CALLBACK - requires validation, if there isn't a provider an exception is throwed
+		NONE - disable validation -->
+		<validation-mode>AUTO</validation-mode>
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			
+			<!-- Define the group to validation as default (the default is javax.validation.groups.Default.class) -->
+			<property name="javax.persistence.validation.group.pre-persist" value="com.github.wesleyegberto.beanvalidation.MinimumValidation" />
+			<property name="javax.persistence.validation.group.pre-update" value="com.github.wesleyegberto.beanvalidation.FullValidation" />
+			
+		</properties>
+	</persistence-unit>
+</persistence>
