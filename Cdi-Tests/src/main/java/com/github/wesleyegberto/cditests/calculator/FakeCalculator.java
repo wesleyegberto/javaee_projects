@@ -3,10 +3,14 @@ package com.github.wesleyegberto.cditests.calculator;
 import javax.annotation.Priority;
 import javax.enterprise.inject.Alternative;
 
+import com.github.wesleyegberto.cditests.qualifiers.Loggable;
 import com.github.wesleyegberto.cditests.qualifiers.TypeCalculator;
 import com.github.wesleyegberto.cditests.qualifiers.TypeCalculatorEnum;
 
-@Alternative @TypeCalculator(type = TypeCalculatorEnum.LOW) @Priority(value = javax.interceptor.Interceptor.Priority.APPLICATION)
+@Alternative
+@TypeCalculator(type = TypeCalculatorEnum.LOW)
+@Priority(value = javax.interceptor.Interceptor.Priority.APPLICATION)
+@Loggable
 public class FakeCalculator implements Calculator {
 	private double tax;
 	private double percentageDiscount;

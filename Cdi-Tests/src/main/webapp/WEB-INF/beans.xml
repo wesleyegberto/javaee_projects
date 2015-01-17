@@ -7,4 +7,14 @@
 		<class>com.github.wesleyegberto.cditests.calculator.FakeCalculator</class>
 	</alternatives>
 	 -->
+	 <!-- 
+	 <interceptors>
+	 	<class>com.github.wesleyegberto.cditests.interceptors.LoggerInterceptor</class>
+	 </interceptors>
+	 -->
+	 <!--
+	 <decorators>
+	 	<class>com.github.wesleyegberto.cditests.decorators.DiscountCalculatorDecorator</class>
+	 </decorators>
+	 -->
 </beans>
