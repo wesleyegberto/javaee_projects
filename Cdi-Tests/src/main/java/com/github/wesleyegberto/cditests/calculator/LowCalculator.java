@@ -9,7 +9,7 @@ import com.github.wesleyegberto.cditests.qualifiers.TypeCalculatorEnum;
 public class LowCalculator implements Calculator {
 	private double tax;
 	private double percentageDiscount;
-
+	
 	public LowCalculator() {
 		this.tax = 0.10;
 		this.percentageDiscount = 0.14;

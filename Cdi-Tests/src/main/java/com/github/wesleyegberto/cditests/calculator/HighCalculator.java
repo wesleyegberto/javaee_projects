@@ -14,7 +14,7 @@ public class HighCalculator implements Calculator {
 		this.tax = 0.18;
 		this.percentageDiscount = 0.19;
 	}
-
+	
 	public double applyTax(double ammount) {
 		return ammount + ammount * tax;
 	}

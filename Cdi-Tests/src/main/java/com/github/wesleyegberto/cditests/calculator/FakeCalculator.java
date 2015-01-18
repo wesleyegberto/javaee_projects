@@ -1,15 +1,9 @@
 package com.github.wesleyegberto.cditests.calculator;
 
-import javax.annotation.Priority;
-import javax.enterprise.inject.Alternative;
-
 import com.github.wesleyegberto.cditests.qualifiers.Loggable;
-import com.github.wesleyegberto.cditests.qualifiers.TypeCalculator;
-import com.github.wesleyegberto.cditests.qualifiers.TypeCalculatorEnum;
+import com.github.wesleyegberto.cditests.stereotypes.Mock;
 
-@Alternative
-@TypeCalculator(type = TypeCalculatorEnum.LOW)
-@Priority(value = javax.interceptor.Interceptor.Priority.APPLICATION)
+@Mock
 @Loggable
 public class FakeCalculator implements Calculator {
 	private double tax;
@@ -19,7 +13,7 @@ public class FakeCalculator implements Calculator {
 		this.tax = 0.5;
 		this.percentageDiscount = 0.0;
 	}
-
+	
 	public double applyTax(double ammount) {
 		return ammount + ammount * tax;
 	}
@@ -27,4 +21,5 @@ public class FakeCalculator implements Calculator {
 	public double applyDiscount(double ammount) {
 		return ammount - ammount * percentageDiscount;
 	}
+
 }
