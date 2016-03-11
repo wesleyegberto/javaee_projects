@@ -4,6 +4,16 @@ Java EE Projects
 Repository for Java EE projects to test the plataform.
 To test I've created a ToyShop application using different technologies of Java EE.
 
+### Bean Validation ###
+Project to test the some features of bean validation.
+
+### CDI ###
+Project to test a little of power of CDI.
+
+### JAX-RS ###
+Project to test some features of JAX-RS specification.
+Example of request: curl -v -H "Authorization: Odair" http://127.0.0.1:8080/jaxrs-specification/resources/person/1
+
 * ToyShop US.txt: user stories used of the features of the application;
 * ToyShopDbScript.sql: script of database with tables for Realm, inserts of data and so on.
 
