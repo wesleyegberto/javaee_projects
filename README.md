@@ -7,6 +7,9 @@ To test I've created a ToyShop application using different technologies of Java 
 ### Bean Validation ###
 Project to test the some features of bean validation.
 
+### JSF Handler ###
+Project to test JSF Exception Handler (sadly CDI isn't working at ExceptionHandler class, so comment the line of `eventFirer.fire`)
+
 ### CDI ###
 Project to test a little of power of CDI.
 
