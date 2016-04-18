@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/core">
+	<h:head>
+		<title>Pagina 1</title>
+	</h:head>
+	<h:body>
+		<h:form>
+			<div>
+				Lançar NFE:
+				<h:commandButton value="Lançar" action="#{indexController.lancarNFE}" />
+			</div>
+			<div>
+				Lançar NPE:
+				<h:commandButton value="Lançar" action="#{indexController.lancarNPE}" />
+			</div>
+		</h:form>
+	</h:body>
+</html>
