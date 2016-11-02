@@ -3,6 +3,7 @@ package com.github.wesleyegberto.cditests.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.enterprise.inject.New;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,9 +20,16 @@ import com.github.wesleyegberto.cditests.qualifiers.TypeCalculatorEnum;
 public class QualifierServlet extends HttpServlet {
 	private static final long serialVersionUID = 143543534533300L;
 
+	// Using qualifier
 	@Inject @High
 	Calculator highCalculator;
+	
+	// Using a producer
+	@Inject @TypeCalculator(type = TypeCalculatorEnum.CUSTOM)
+	@New // force to not reuse an existing instance (RequestScoped)
+	Calculator mediumCalculator;
 
+	// Using qualifier with an attribute
 	@Inject @TypeCalculator(type = TypeCalculatorEnum.LOW)
 	Calculator lowCalculator;
 

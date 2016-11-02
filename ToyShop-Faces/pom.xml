@@ -64,7 +64,7 @@
 		<!-- Dependencies to use the Annotations of Arquillian -->
 		<dependency>
 			<groupId>org.jboss.arquillian.junit</groupId>
-			<artifactId>arquillian-junit-core</artifactId>
+			<artifactId>arquillian-junit-container</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
