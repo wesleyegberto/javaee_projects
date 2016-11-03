@@ -1,26 +1,25 @@
 package com.github.wesleyegberto.jaxrsspecificationtest.aop;
 
-import com.github.wesleyegberto.jaxrsspecificationtest.config.AdminAudited;
+import java.io.IOException;
 
 import javax.annotation.Priority;
 import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
-import javax.ws.rs.container.PreMatching;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.Provider;
-import java.io.IOException;
+
+import com.github.wesleyegberto.jaxrsspecificationtest.config.AdminAudited;
 
 /**
  * Will be added dynamically to the resource.
  */
-// When I uncomment the lines bellow the dynamic binding doesn't work
-//@Provider
-//@PreMatching
-//@AdminAudited
-// Did the same as HeaderValidatorFilter, I used @Priority to replace @PreMatching
+@Provider
+//@PreMatching If we use PreMatching the NamedBinding will not be considered
+// So instead we use @Priority
 @Priority(Priorities.AUTHORIZATION)
+@AdminAudited
 public class HeaderAdminValidatorFilter implements ContainerRequestFilter {
 
 	@Override

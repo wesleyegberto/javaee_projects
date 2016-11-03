@@ -1,11 +1,13 @@
 package com.github.wesleyegberto.cditests.calculator;
 
 import com.github.wesleyegberto.cditests.qualifiers.High;
+import com.github.wesleyegberto.cditests.qualifiers.Loggable;
 import com.github.wesleyegberto.cditests.qualifiers.TypeCalculator;
 import com.github.wesleyegberto.cditests.qualifiers.TypeCalculatorEnum;
 
 @High
 @TypeCalculator(type = TypeCalculatorEnum.HIGH)
+@Loggable
 public class HighCalculator implements Calculator {
 	private double tax;
 	private double percentageDiscount;

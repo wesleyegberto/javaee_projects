@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import com.github.wesleyegberto.jaxrsspecificationtest.business.entity.Person;
+import com.github.wesleyegberto.jaxrsspecificationtest.config.AdminAudited;
 import com.github.wesleyegberto.jaxrsspecificationtest.config.Audited;
 
 /**
@@ -62,6 +63,7 @@ public class PersonResources {
     @DELETE
 	@Path("/{id: \\d+}")
 	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
+    @AdminAudited
 	public Response deletePerson(@PathParam("id") int id) {
         System.out.println("Deleting " + id);
         personManager.delete(id);

@@ -3,7 +3,6 @@ package com.github.wesleyegberto.cditests.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.enterprise.inject.New;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,8 +24,9 @@ public class QualifierServlet extends HttpServlet {
 	Calculator highCalculator;
 	
 	// Using a producer
-	@Inject @TypeCalculator(type = TypeCalculatorEnum.CUSTOM)
-	@New // force to not reuse an existing instance (RequestScoped)
+	@Inject
+	@TypeCalculator(type = TypeCalculatorEnum.CUSTOM)
+	// @New if it was concrete force to not reuse an existing instance (RequestScoped)
 	Calculator mediumCalculator;
 
 	// Using qualifier with an attribute

@@ -17,7 +17,7 @@ import com.github.wesleyegberto.cditests.qualifiers.TypeCalculatorEnum;
 public class InterceptorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	@Inject @TypeCalculator(type = TypeCalculatorEnum.LOW)
+	@Inject @TypeCalculator(type = TypeCalculatorEnum.HIGH)
 	Calculator calculator;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

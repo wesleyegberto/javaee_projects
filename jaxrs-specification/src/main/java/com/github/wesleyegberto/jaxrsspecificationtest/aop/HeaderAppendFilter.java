@@ -1,13 +1,13 @@
 package com.github.wesleyegberto.jaxrsspecificationtest.aop;
 
-import javax.ws.rs.container.ContainerRequestContext;
-import javax.ws.rs.container.ContainerRequestFilter;
-import javax.ws.rs.container.PreMatching;
-import javax.ws.rs.ext.Provider;
 import java.io.IOException;
 
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerRequestFilter;
+import javax.ws.rs.ext.Provider;
+
 /**
- * Example of filter request which is executed AFTER the endpoint.
+ * Example of filter request which is executed AFTER the endpoint action is matcheds.
  *
  * Global default: by defaul all request to endpoints are filtered.
  *
