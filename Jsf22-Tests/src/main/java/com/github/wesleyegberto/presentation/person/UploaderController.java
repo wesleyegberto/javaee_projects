@@ -28,7 +28,7 @@ public class UploaderController {
 
 	public void save() throws IOException {
 		System.out.println("Saving");
-		// We should save the file outside of war application, because after restart/dedeploy all files will be deleted
+		// We should save the file outside of war application, because after restart/redeploy all files will be deleted
 		ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
 		String absoluteDiskPath = servletContext.getRealPath("resources/uploads/");
 		

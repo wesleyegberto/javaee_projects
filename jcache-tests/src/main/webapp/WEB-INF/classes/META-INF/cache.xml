@@ -1,0 +1,11 @@
+<caches>
+	<caching-provider>org.ehcache.jsr107.EhcacheCachingProvider</caching-provider>
+	<cache name="personCacheFile" key="java.lang.Integer" value="com.github.wesleyegberto.jcachetests.entity.Person">
+		<configuration>
+			<property name="store.by.value" value="true" />
+			<property name="management.enabled" value="false" />
+			<property name="statistics.enabled" value="true" />
+			<property name="vendor.specific" value="unicorn" />
+		</configuration>
+	</cache>
+</caches>
